@@ -23,17 +23,23 @@ export default function PublicNavbar() {
         </Link>
 
         <nav className="public-navbar__nav" aria-label="Navigasi utama">
-          {navLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className={`public-navbar__link ${
-                location.pathname === link.to ? "public-navbar__link--active" : ""
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = link.to === "/" 
+              ? location.pathname === "/"
+              : location.pathname.startsWith(link.to);
+
+            return (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`public-navbar__link ${
+                  isActive ? "public-navbar__link--active" : ""
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <Link to="/masuk" className="public-navbar__login-btn">
