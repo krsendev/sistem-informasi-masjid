@@ -67,15 +67,12 @@ if (config.nodeEnv === "development") {
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
 // Swagger Documentation
-app.use(
-  "/api-docs",
-  swaggerUi.serve,
-  swaggerUi.setup(swaggerSpec, {
-    explorer: true,
-    customCss: ".swagger-ui .topbar { display: none }",
-    customSiteTitle: "SIMM API Documentation",
-  }),
-);
+const swaggerUiOptions = {
+  explorer: true,
+  customCss: ".swagger-ui .topbar { display: none }",
+  customSiteTitle: "SIMM API Documentation",
+};
+app.use("/api-docs", swaggerUi.serveFiles(swaggerSpec, swaggerUiOptions), swaggerUi.setup(swaggerSpec, swaggerUiOptions));
 
 // Health Check
 app.get("/api/health", (req, res) => {
