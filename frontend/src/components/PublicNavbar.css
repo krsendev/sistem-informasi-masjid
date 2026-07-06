@@ -1,0 +1,102 @@
+.public-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.public-navbar__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+  height: 64px;
+}
+
+.public-navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #003f7d;
+  flex-shrink: 0;
+}
+
+.public-navbar__icon {
+  width: 28px;
+  height: 28px;
+  color: #005bac;
+}
+
+.public-navbar__brand-text {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.public-navbar__nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.public-navbar__link {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #424751;
+  text-decoration: none;
+  padding: 20px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  letter-spacing: 0.01em;
+}
+
+.public-navbar__link:hover {
+  color: #005bac;
+}
+
+.public-navbar__link--active {
+  color: #005bac;
+  border-bottom-color: #005bac;
+}
+
+.public-navbar__login-btn {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background: #004482;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 24px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+  letter-spacing: 0.01em;
+}
+
+.public-navbar__login-btn:hover {
+  background: #005bac;
+}
+
+/* Responsive */
+@media (max-width: 1279px) {
+  .public-navbar__container {
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .public-navbar__container {
+    padding: 0 16px;
+  }
+
+  .public-navbar__nav {
+    display: none;
+  }
+}

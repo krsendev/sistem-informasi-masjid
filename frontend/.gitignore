@@ -30,3 +30,5 @@ node_modules/
 backend/.env
 frontend/.env
 dist
+
+DESIGN.md

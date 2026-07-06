@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Beranda from "./pages/Beranda";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -14,8 +15,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
+        {/* Public Routes */}
+        <Route path="/" element={<Beranda />} />
+        <Route path="/masuk" element={<Login />} />
 
+        {/* Protected Routes */}
         <Route path="/dashboard" element={
             <ProtectedRoute>
               <Dashboard />
@@ -59,10 +63,6 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
-
-  
-
 }
-
 
 export default App;

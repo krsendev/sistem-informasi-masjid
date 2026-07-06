@@ -1,0 +1,69 @@
+.public-footer {
+  background: #f8f9fa;
+  border-top: 1px solid #e2e8f0;
+  margin-top: auto;
+}
+
+.public-footer__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.public-footer__brand-text {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #003f7d;
+}
+
+.public-footer__nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.public-footer__link {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.public-footer__link:hover {
+  color: #005bac;
+  text-decoration: underline;
+}
+
+.public-footer__copyright {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 12px;
+  color: #64748b;
+  margin: 0;
+}
+
+@media (max-width: 1279px) {
+  .public-footer__container {
+    padding: 24px 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .public-footer__container {
+    padding: 24px 16px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .public-footer__nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
