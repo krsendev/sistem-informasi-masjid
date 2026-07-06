@@ -17,7 +17,12 @@ const notFound = require("./middleware/notFound");
 const app = express();
 
 // Security Middleware
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false,
+  })
+);
 app.use(
   cors({
     origin: (origin, callback) => {

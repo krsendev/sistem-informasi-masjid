@@ -8,13 +8,13 @@ const startServer = async () => {
     await connectDB();
 
     // Start Express server
-    const server = app.listen(config.port, () => {
+    const server = app.listen(config.port, '0.0.0.0', () => {
       console.log(`\nSIMM API Server`);
       console.log(`Environment: ${config.nodeEnv}`);
       console.log(`Port: ${config.port}`);
-      console.log(`API: http://localhost:${config.port}/api`);
-      console.log(`Docs: http://localhost:${config.port}/api-docs`);
-      console.log(`Health: http://localhost:${config.port}/api/health\n`);
+      console.log(`API: http://103.150.116.43:${config.port}/api`);
+      console.log(`Docs: http://103.150.116.43:${config.port}/api-docs`);
+      console.log(`Health: http://103.150.116.43:${config.port}/api/health\n`);
     });
 
     // Graceful shutdown

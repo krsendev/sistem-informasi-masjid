@@ -9,7 +9,7 @@
   // State Management
   // ==========================================
   const state = {
-    baseUrl: "http://localhost:5500",
+    baseUrl: "http://103.150.116.43:4001",
     accessToken: null,
     refreshToken: null,
     currentUser: null,

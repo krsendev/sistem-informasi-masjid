@@ -2,7 +2,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 module.exports = {
-  port: parseInt(process.env.PORT, 10) || 5000,
+  port: parseInt(process.env.PORT, 10) || 4001,
   nodeEnv: process.env.NODE_ENV || "development",
 
   // MongoDB
