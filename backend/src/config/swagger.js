@@ -13,8 +13,12 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:5000',
-        description: 'Development Server',
+        url: 'http://103.150.116.43:4001',
+        description: 'Production Server (VPS)',
+      },
+      {
+        url: 'https://simm-api.krsendev.my.id',
+        description: 'Production Server (Domain)',
       },
     ],
     components: {
