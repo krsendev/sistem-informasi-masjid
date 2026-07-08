@@ -32,6 +32,7 @@ export default function PublicPengumuman() {
   const [searchInput, setSearchInput] = useState("");
   const [category, setCategory] = useState("semua");
   const [page, setPage] = useState(1);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const fetchData = async () => {
     setLoading(true);
@@ -128,9 +129,13 @@ export default function PublicPengumuman() {
                     </p>
                   </div>
                   <div className="card__footer">
-                    <Link to={`/pengumuman/${item._id}`} className="card__link">
+                    <button 
+                      onClick={() => setSelectedItem(item)} 
+                      className="card__link"
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                    >
                       Baca Selengkapnya →
-                    </Link>
+                    </button>
                   </div>
                 </div>
               ))}
@@ -167,6 +172,32 @@ export default function PublicPengumuman() {
       </div>
 
       <PublicFooter />
+
+      {selectedItem && (
+        <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setSelectedItem(null)}>
+              <i className="fa-solid fa-xmark"></i>
+            </button>
+            {selectedItem.thumbnail ? (
+              <img className="modal-image" src={`${apiBase}${selectedItem.thumbnail}`} alt={selectedItem.title} />
+            ) : (
+              <div className="modal-image-placeholder"><i className="fa-regular fa-newspaper"></i></div>
+            )}
+            <div className="modal-body">
+              <span className="card__category" style={{ marginBottom: '12px' }}>{selectedItem.category}</span>
+              <h2 className="modal-title">{selectedItem.title}</h2>
+              <div className="card__meta" style={{ marginBottom: '24px' }}>
+                <span className="card__meta-item"><i className="fa-regular fa-calendar"></i> {formatDate(selectedItem.publishedAt || selectedItem.createdAt)}</span>
+                {selectedItem.author?.name && (
+                  <span className="card__meta-item"><i className="fa-solid fa-pencil"></i> {selectedItem.author.name}</span>
+                )}
+              </div>
+              <div className="modal-text" dangerouslySetInnerHTML={{ __html: selectedItem.content }} />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
