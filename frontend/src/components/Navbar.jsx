@@ -5,7 +5,7 @@ export default function Navbar({ toggleSidebar }) {
 
   const logout = () => {
     localStorage.clear();
-    navigate("/masuk");
+    navigate("/");
   };
 
   const user = JSON.parse(localStorage.getItem("user"));
