@@ -29,10 +29,15 @@ const financeSchema = new mongoose.Schema(
       required: [true, 'Jumlah wajib diisi'],
       min: [0, 'Jumlah tidak boleh negatif'],
     },
+    title: {
+      type: String,
+      required: [true, 'Nama transaksi wajib diisi'],
+      trim: true,
+    },
     description: {
       type: String,
-      required: [true, 'Deskripsi wajib diisi'],
       trim: true,
+      default: '',
     },
     date: {
       type: Date,
