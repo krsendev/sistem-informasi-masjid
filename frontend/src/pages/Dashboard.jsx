@@ -71,47 +71,79 @@ export default function Dashboard() {
             <p>Memuat data statistik...</p>
           </div>
         ) : (
-          <div className="dashboard-stats-grid">
-            <div className="stat-card users">
-              <div className="stat-icon-wrapper" style={{ background: '#fef2f2', color: '#ef4444' }}>
-                <i className="fa-solid fa-money-bill-transfer" style={{ fontSize: '24px' }}></i>
+          <>
+            <div className="dashboard-stats-grid">
+              <div className="stat-card income">
+                <div className="stat-icon-wrapper">
+                  <i className="fa-solid fa-hand-holding-dollar" style={{ fontSize: '24px' }}></i>
+                </div>
+                <div className="stat-content">
+                  <span className="stat-value">{formatCurrency(stats.donations)}</span>
+                  <span className="stat-label">Total Pemasukan</span>
+                </div>
               </div>
-              <div className="stat-content">
-                <span className="stat-value">{formatCurrency(stats.expenses)}</span>
-                <span className="stat-label">Total Pengeluaran</span>
+
+              <div className="stat-card users">
+                <div className="stat-icon-wrapper" style={{ background: '#fef2f2', color: '#ef4444' }}>
+                  <i className="fa-solid fa-money-bill-transfer" style={{ fontSize: '24px' }}></i>
+                </div>
+                <div className="stat-content">
+                  <span className="stat-value">{formatCurrency(stats.expenses)}</span>
+                  <span className="stat-label">Total Pengeluaran</span>
+                </div>
+              </div>
+
+              <div className="stat-card balance">
+                <div className="stat-icon-wrapper">
+                  <i className="fa-solid fa-wallet" style={{ fontSize: '24px' }}></i>
+                </div>
+                <div className="stat-content">
+                  <span className="stat-value">{formatCurrency(stats.finances)}</span>
+                  <span className="stat-label">Saldo Keuangan</span>
+                </div>
+              </div>
+
+              <div className="stat-card events">
+                <div className="stat-icon-wrapper">
+                  <i className="fa-regular fa-calendar-days" style={{ fontSize: '24px' }}></i>
+                </div>
+                <div className="stat-content">
+                  <span className="stat-value">{stats.events}</span>
+                  <span className="stat-label">Total Event / Kajian</span>
+                </div>
               </div>
             </div>
 
-            <div className="stat-card events">
-              <div className="stat-icon-wrapper">
-                <i className="fa-regular fa-calendar-days" style={{ fontSize: '24px' }}></i>
-              </div>
-              <div className="stat-content">
-                <span className="stat-value">{stats.events}</span>
-                <span className="stat-label">Total Event / Kajian</span>
+            <div style={{ marginTop: '2.5rem' }}>
+              <h2 className="dashboard-section-title">Aksi Cepat</h2>
+              <div className="quick-actions-grid">
+                <a href="/admin/finance" className="action-card">
+                  <div className="action-icon">
+                    <i className="fa-solid fa-file-invoice-dollar"></i>
+                  </div>
+                  <span style={{ fontWeight: 500 }}>Kelola Keuangan</span>
+                </a>
+                <a href="/admin/events" className="action-card">
+                  <div className="action-icon">
+                    <i className="fa-solid fa-calendar-plus"></i>
+                  </div>
+                  <span style={{ fontWeight: 500 }}>Buat Event Baru</span>
+                </a>
+                <a href="/admin/announcements" className="action-card">
+                  <div className="action-icon">
+                    <i className="fa-solid fa-bullhorn"></i>
+                  </div>
+                  <span style={{ fontWeight: 500 }}>Buat Pengumuman</span>
+                </a>
+                <a href="/admin/users" className="action-card">
+                  <div className="action-icon">
+                    <i className="fa-solid fa-user-plus"></i>
+                  </div>
+                  <span style={{ fontWeight: 500 }}>Tambah Pengurus</span>
+                </a>
               </div>
             </div>
-
-            <div className="stat-card income">
-              <div className="stat-icon-wrapper">
-                <i className="fa-solid fa-hand-holding-dollar" style={{ fontSize: '24px' }}></i>
-              </div>
-              <div className="stat-content">
-                <span className="stat-value">{formatCurrency(stats.donations)}</span>
-                <span className="stat-label">Total Pemasukan</span>
-              </div>
-            </div>
-
-            <div className="stat-card balance">
-              <div className="stat-icon-wrapper">
-                <i className="fa-solid fa-wallet" style={{ fontSize: '24px' }}></i>
-              </div>
-              <div className="stat-content">
-                <span className="stat-value">{formatCurrency(stats.finances)}</span>
-                <span className="stat-label">Saldo Keuangan</span>
-              </div>
-            </div>
-          </div>
+          </>
         )}
       </div>
     </MainLayout>
