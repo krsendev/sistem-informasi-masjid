@@ -75,24 +75,24 @@ export default function PublicTransparansi() {
             {/* Summary Stats */}
             <div className="finance-stats">
               <div className="finance-stat-card">
-                <div className="finance-stat-card__label"><i className="fa-solid fa-sack-dollar"></i> Total Pemasukan (YTD)</div>
-                <div className="finance-stat-card__value">{formatCurrency(data.totalIncome)}</div>
+                <div className="finance-stat-card__label"><i className="fa-solid fa-sack-dollar"></i> Total Pemasukan (Keseluruhan)</div>
+                <div className="finance-stat-card__value">{formatCurrency(data.totalIncomeAllTime)}</div>
                 <div className="finance-stat-card__sub finance-stat-card__sub--positive">
-                  {data.incomeCount} transaksi
+                  Seluruh transaksi pemasukan
                 </div>
               </div>
               <div className="finance-stat-card">
-                <div className="finance-stat-card__label"><i className="fa-solid fa-money-bill-transfer"></i> Total Pengeluaran (YTD)</div>
-                <div className="finance-stat-card__value">{formatCurrency(data.totalExpense)}</div>
+                <div className="finance-stat-card__label"><i className="fa-solid fa-money-bill-transfer"></i> Total Pengeluaran (Keseluruhan)</div>
+                <div className="finance-stat-card__value">{formatCurrency(data.totalExpenseAllTime)}</div>
                 <div className="finance-stat-card__sub">
-                  {data.expenseCount} transaksi
+                  Seluruh transaksi pengeluaran
                 </div>
               </div>
               <div className="finance-stat-card">
                 <div className="finance-stat-card__label"><i className="fa-solid fa-scale-balanced"></i> Saldo Bersih</div>
-                <div className="finance-stat-card__value">{formatCurrency(data.balance)}</div>
+                <div className="finance-stat-card__value">{formatCurrency(data.balanceAllTime)}</div>
                 <div className="finance-stat-card__sub finance-stat-card__sub--positive">
-                  Tahun {data.year}
+                  Total saat ini
                 </div>
               </div>
             </div>
