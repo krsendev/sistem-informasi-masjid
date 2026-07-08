@@ -15,8 +15,11 @@ const createFinanceRules = [
       if (parseFloat(value) < 0) throw new Error('Jumlah tidak boleh negatif');
       return true;
     }),
+  body('title')
+    .notEmpty().withMessage('Judul/Nama transaksi wajib diisi')
+    .trim(),
   body('description')
-    .notEmpty().withMessage('Deskripsi wajib diisi')
+    .optional()
     .trim(),
   body('date')
     .notEmpty().withMessage('Tanggal wajib diisi')
@@ -37,10 +40,13 @@ const updateFinanceRules = [
       if (parseFloat(value) < 0) throw new Error('Jumlah tidak boleh negatif');
       return true;
     }),
-  body('description')
+  body('title')
     .optional()
     .trim()
-    .notEmpty().withMessage('Deskripsi tidak boleh kosong'),
+    .notEmpty().withMessage('Judul tidak boleh kosong'),
+  body('description')
+    .optional()
+    .trim(),
   body('date')
     .optional()
     .isISO8601().withMessage('Format tanggal tidak valid (gunakan ISO 8601)'),
