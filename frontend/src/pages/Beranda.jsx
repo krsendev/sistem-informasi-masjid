@@ -98,25 +98,25 @@ export default function Beranda() {
           <div className="beranda-hero__content">
             <div className="beranda-hero__badge">✦ Enlightened Progress</div>
             <h1 className="beranda-hero__title">
-              Memajukan Umat Melalui Ilmu &amp; Keimanan
+              Memajukan Umat Melalui Ilmu & Keimanan
             </h1>
             <p className="beranda-hero__subtitle">
-              Selamat datang di portal resmi SIMM Al-Hikmah. Temukan program
+              Selamat datang di portal resmi SIMM Baitul Muttaqin. Temukan program
               akademik, jadwal kajian mendatang, dan transparansi keuangan
               institusi untuk membangun komunitas yang modern dan terhubung.
             </p>
-            <div className="beranda-hero__actions">
-              <a href="#beranda-schedule" className="beranda-hero__btn-primary">
-                Lihat Jadwal →
-              </a>
-              <Link to="/donasi" className="beranda-hero__btn-secondary">
-                Salurkan Donasi
-              </Link>
-            </div>
           </div>
-          <div className="beranda-hero__image">
-            <img src={heroImage} alt="Ilustrasi Masjid Al-Hikmah" />
+          <div className="beranda-hero__actions">
+            <a href="#beranda-schedule" className="beranda-hero__btn-primary">
+              Lihat Jadwal →
+            </a>
+            <Link to="/donasi" className="beranda-hero__btn-secondary">
+              Salurkan Donasi
+            </Link>
           </div>
+        </div>
+        <div className="beranda-hero__image">
+          <img src={heroImage} alt="Ilustrasi Masjid Baitul Muttaqin" />
         </div>
       </section>
 

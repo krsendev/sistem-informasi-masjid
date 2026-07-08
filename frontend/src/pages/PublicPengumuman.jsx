@@ -73,7 +73,7 @@ export default function PublicPengumuman() {
             <h1 className="page-hero__title">Pengumuman</h1>
             <p className="page-hero__subtitle">
               Temukan informasi terbaru seputar kegiatan, program, dan
-              pengumuman penting dari Masjid Al-Hikmah.
+              pengumuman penting dari Masjid Baitul Muttaqin.
             </p>
           </div>
         </div>

@@ -16,7 +16,7 @@ export default function PublicNavbar() {
       <div className="public-navbar__container">
         <Link to="/" className="public-navbar__brand">
           <i className="fa-solid fa-mosque public-navbar__icon" style={{ fontSize: '24px', marginRight: '8px' }}></i>
-          <span className="public-navbar__brand-text">SIMM Al-Hikmah</span>
+          <span className="public-navbar__brand-text">SIMM Baitul Muttaqin</span>
         </Link>
 
         <nav className="public-navbar__nav" aria-label="Navigasi utama">

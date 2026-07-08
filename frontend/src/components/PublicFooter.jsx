@@ -8,7 +8,7 @@ export default function PublicFooter() {
     <footer className="public-footer" id="public-footer">
       <div className="public-footer__container">
         <div className="public-footer__brand">
-          <span className="public-footer__brand-text">SIMM Al-Hikmah</span>
+          <span className="public-footer__brand-text">SIMM Baitul Muttaqin</span>
         </div>
 
         <nav className="public-footer__nav" aria-label="Footer navigation">
