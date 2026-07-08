@@ -8,8 +8,6 @@ import "./PublicPages.css";
 const CATEGORIES = [
   "semua",
   "pengumuman",
-  "kegiatan",
-  "kajian",
   "ramadhan",
   "infaq",
   "zakat",

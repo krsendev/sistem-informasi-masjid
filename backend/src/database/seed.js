@@ -89,7 +89,7 @@ const seedData = async () => {
         title: 'Kajian Rutin Subuh',
         slug: generateUniqueSlug('Kajian Rutin Subuh'),
         content: 'Kajian rutin ba\'da subuh setiap hari Ahad bersama Ustadz Ahmad. Tema: Fiqih Ibadah.',
-        category: 'kajian',
+        category: 'pengumuman',
         status: ANNOUNCEMENT_STATUS.PUBLISHED,
         author: superadmin._id,
         publishedAt: new Date(),

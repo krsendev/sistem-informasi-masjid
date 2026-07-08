@@ -3,7 +3,7 @@ import api from "../api/axios";
 import MainLayout from "../layouts/MainLayout";
 
 const ANNOUNCEMENT_CATEGORIES = [
-  'pengumuman', 'kegiatan', 'kajian', 'ramadhan',
+  'pengumuman', 'ramadhan',
   'infaq', 'zakat', 'qurban', 'lainnya'
 ];
 

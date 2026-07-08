@@ -12,8 +12,6 @@ const ANNOUNCEMENT_STATUS = {
 
 const ANNOUNCEMENT_CATEGORIES = [
   'pengumuman',
-  'kegiatan',
-  'kajian',
   'ramadhan',
   'infaq',
   'zakat',
