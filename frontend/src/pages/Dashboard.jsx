@@ -149,26 +149,28 @@ export default function Dashboard() {
             </div>
 
             <div style={{ marginTop: '2.5rem', display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
-              <div style={{ flex: '1 1 500px', background: '#fff', padding: '24px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
+              <div style={{ flex: '1 1 100%', minWidth: 0, maxWidth: '100%', background: '#fff', padding: '24px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
                 <h2 className="dashboard-section-title" style={{ marginBottom: '20px' }}>Grafik Keuangan (Bulanan)</h2>
                 <div style={{ width: '100%', height: 300 }}>
-                  <ResponsiveContainer>
+                  <ResponsiveContainer width="100%" height="100%">
                     <BarChart
                       data={stats.financeChartData}
-                      margin={{ top: 5, right: 20, left: 20, bottom: 5 }}
+                      margin={{ top: 5, right: 10, left: 0, bottom: 5 }}
                     >
                       <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                      <XAxis dataKey="name" axisLine={false} tickLine={false} />
+                      <XAxis dataKey="name" axisLine={false} tickLine={false} style={{ fontSize: '12px' }} />
                       <YAxis 
                         axisLine={false} 
                         tickLine={false} 
                         tickFormatter={(value) => `Rp ${value / 1000000}M`}
+                        style={{ fontSize: '12px' }}
+                        width={65}
                       />
                       <Tooltip 
                         formatter={(value) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(value)}
                         cursor={{fill: 'transparent'}}
                       />
-                      <Legend iconType="circle" />
+                      <Legend iconType="circle" wrapperStyle={{ fontSize: '12px' }} />
                       <Bar dataKey="Pemasukan" fill="#10b981" radius={[4, 4, 0, 0]} barSize={32} />
                       <Bar dataKey="Pengeluaran" fill="#ef4444" radius={[4, 4, 0, 0]} barSize={32} />
                     </BarChart>
@@ -176,18 +178,18 @@ export default function Dashboard() {
                 </div>
               </div>
 
-              <div style={{ flex: '1 1 300px', background: '#fff', padding: '24px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
+              <div style={{ flex: '1 1 100%', minWidth: 0, maxWidth: '100%', background: '#fff', padding: '24px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
                 <h2 className="dashboard-section-title" style={{ marginBottom: '20px' }}>Statistik Event (Kategori)</h2>
                 <div style={{ width: '100%', height: 300 }}>
-                  <ResponsiveContainer>
+                  <ResponsiveContainer width="100%" height="100%">
                     <BarChart
                       data={stats.eventChartData}
                       layout="vertical"
-                      margin={{ top: 5, right: 20, left: 20, bottom: 5 }}
+                      margin={{ top: 5, right: 10, left: -20, bottom: 5 }}
                     >
                       <CartesianGrid strokeDasharray="3 3" horizontal={false} />
-                      <XAxis type="number" axisLine={false} tickLine={false} />
-                      <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} width={100} />
+                      <XAxis type="number" axisLine={false} tickLine={false} style={{ fontSize: '12px' }} />
+                      <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} width={100} style={{ fontSize: '12px' }} />
                       <Tooltip cursor={{fill: 'transparent'}} />
                       <Bar dataKey="Total" fill="#3b82f6" radius={[0, 4, 4, 0]} barSize={24} />
                     </BarChart>

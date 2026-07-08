@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar({ toggleSidebar }) {
   const navigate = useNavigate();
 
   const logout = () => {
@@ -23,9 +23,17 @@ export default function Navbar() {
         boxShadow: "0 2px 4px rgba(0,0,0,0.02)",
       }}
     >
-      <h3 style={{ margin: 0, color: "#334155", fontSize: "1.2rem", fontWeight: "600" }}>
-        Admin Panel
-      </h3>
+      <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+        <button 
+          className="hamburger-btn" 
+          onClick={toggleSidebar}
+        >
+          <i className="fa-solid fa-bars"></i>
+        </button>
+        <h3 style={{ margin: 0, color: "#334155", fontSize: "1.2rem", fontWeight: "600" }}>
+          Admin Panel
+        </h3>
+      </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>

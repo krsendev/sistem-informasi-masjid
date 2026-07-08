@@ -1,21 +1,29 @@
+import { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 
 export default function MainLayout({ children }) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
-    <div style={{ display: "flex" }}>
-      <Sidebar />
+    <div className="admin-layout">
+      <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+      
+      <div 
+        className={`sidebar-overlay ${isSidebarOpen ? 'open' : ''}`} 
+        onClick={toggleSidebar}
+      ></div>
 
-      <div
-        style={{
-          flex: 1,
-          background: "#f5f5f5",
-          minHeight: "100vh",
-        }}
-      >
-        <Navbar />
+      <div className="admin-main">
+        <Navbar toggleSidebar={toggleSidebar} />
 
-        <div style={{ padding: 25 }}>{children}</div>
+        <div className="admin-content">
+          {children}
+        </div>
       </div>
     </div>
   );
