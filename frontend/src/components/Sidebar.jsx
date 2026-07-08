@@ -17,11 +17,14 @@ export default function Sidebar() {
         width: "250px",
         background: "#1e293b",
         color: "white",
-        minHeight: "100vh",
+        height: "100vh",
+        position: "sticky",
+        top: 0,
         padding: "24px 16px",
         display: "flex",
         flexDirection: "column",
         boxShadow: "2px 0 10px rgba(0,0,0,0.1)",
+        overflowY: "auto",
       }}
     >
       <div style={{ padding: "0 10px", marginBottom: "20px" }}>
