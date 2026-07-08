@@ -4,7 +4,6 @@ import "./PublicNavbar.css";
 const navLinks = [
   { to: "/", label: "Beranda" },
   { to: "/pengumuman", label: "Pengumuman" },
-  { to: "/kajian", label: "Kajian" },
   { to: "/kegiatan", label: "Kegiatan" },
   { to: "/transparansi", label: "Transparansi" },
 ];

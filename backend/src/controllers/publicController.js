@@ -1,7 +1,6 @@
 const Announcement = require('../models/Announcement');
 const Event = require('../models/Event');
 const Finance = require('../models/Finance');
-const Donation = require('../models/Donation');
 const { successResponse, paginatedResponse } = require('../utils/response');
 const { ANNOUNCEMENT_STATUS, PAGINATION, FINANCE_TYPE } = require('../constants');
 
@@ -121,7 +120,14 @@ class PublicController {
       const startOfYear = new Date(targetYear, 0, 1);
       const endOfYear = new Date(targetYear, 11, 31, 23, 59, 59);
 
-      const [incomeResult, expenseResult, categoryBreakdown, recentDonations] = await Promise.all([
+      const [
+        incomeResult, 
+        expenseResult, 
+        categoryBreakdown, 
+        recentDonations,
+        allTimeIncomeResult,
+        allTimeExpenseResult
+      ] = await Promise.all([
         Finance.aggregate([
           { $match: { type: 'income', date: { $gte: startOfYear, $lte: endOfYear } } },
           { $group: { _id: null, total: { $sum: '$amount' }, count: { $sum: 1 } } },
@@ -135,11 +141,25 @@ class PublicController {
           { $group: { _id: '$category', total: { $sum: '$amount' } } },
           { $sort: { total: -1 } },
         ]),
-        Donation.find().sort({ date: -1 }).limit(10).lean(),
+        Finance.find({ 
+          type: 'income', 
+          category: { $in: ['donasi', 'infaq', 'zakat', 'sedekah'] } 
+        }).sort({ date: -1 }).limit(10).lean(),
+        Finance.aggregate([
+          { $match: { type: 'income' } },
+          { $group: { _id: null, total: { $sum: '$amount' } } }
+        ]),
+        Finance.aggregate([
+          { $match: { type: 'expense' } },
+          { $group: { _id: null, total: { $sum: '$amount' } } }
+        ])
       ]);
 
       const totalIncome = incomeResult.length > 0 ? incomeResult[0].total : 0;
       const totalExpense = expenseResult.length > 0 ? expenseResult[0].total : 0;
+      
+      const totalIncomeAllTime = allTimeIncomeResult.length > 0 ? allTimeIncomeResult[0].total : 0;
+      const totalExpenseAllTime = allTimeExpenseResult.length > 0 ? allTimeExpenseResult[0].total : 0;
 
       // Monthly breakdown
       const monthlyData = await Finance.aggregate([
@@ -168,6 +188,9 @@ class PublicController {
         totalIncome,
         totalExpense,
         balance: totalIncome - totalExpense,
+        totalIncomeAllTime,
+        totalExpenseAllTime,
+        balanceAllTime: totalIncomeAllTime - totalExpenseAllTime,
         incomeCount: incomeResult.length > 0 ? incomeResult[0].count : 0,
         expenseCount: expenseResult.length > 0 ? expenseResult[0].count : 0,
         year: targetYear,

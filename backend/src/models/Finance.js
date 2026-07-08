@@ -19,6 +19,11 @@ const financeSchema = new mongoose.Schema(
         message: 'Kategori tidak valid',
       },
     },
+    donorName: {
+      type: String,
+      trim: true,
+      default: '',
+    },
     amount: {
       type: Number,
       required: [true, 'Jumlah wajib diisi'],

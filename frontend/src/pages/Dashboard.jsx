@@ -24,8 +24,8 @@ export default function Dashboard() {
         setStats({
           users: usersRes.data?.data?.length || usersRes.data?.data?.total || 0,
           events: eventsRes.data?.data?.length || eventsRes.data?.data?.total || 0,
-          donations: pubFinanceRes.data?.data?.totalIncome || 0,
-          finances: pubFinanceRes.data?.data?.balance || 0,
+          donations: pubFinanceRes.data?.data?.totalIncomeAllTime || 0,
+          finances: pubFinanceRes.data?.data?.balanceAllTime || 0,
         });
       } catch (error) {
         console.error("Error fetching dashboard stats:", error);

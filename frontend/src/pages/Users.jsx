@@ -105,142 +105,108 @@ export default function Users() {
 
   return (
     <MainLayout>
-      <h2>Manajemen User</h2>
+      <div style={{ paddingBottom: '40px' }}>
+        <h2 style={{ marginBottom: '24px' }}>Manajemen User</h2>
 
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          display: "grid",
-          gap: 10,
-          marginTop: 20,
-          marginBottom: 30,
-          background: "#fff",
-          padding: 20,
-          borderRadius: 10,
-        }}
-      >
-        <input
-          type="text"
-          name="name"
-          placeholder="Nama"
-          value={form.name}
-          onChange={handleChange}
-          required
-        />
+        <div style={{ background: "#fff", padding: '24px', borderRadius: '12px', marginBottom: '32px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
+          <h3 style={{ marginTop: 0, marginBottom: '20px', fontSize: '1.2rem' }}>{editingId ? "Edit User" : "Tambah User"}</h3>
+          
+          <form onSubmit={handleSubmit} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: '20px' }}>
+            
+            <div className="form-group">
+              <label>Nama Lengkap</label>
+              <input className="form-control" type="text" name="name" placeholder="John Doe" value={form.name} onChange={handleChange} required />
+            </div>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-          required
-        />
+            <div className="form-group">
+              <label>Alamat Email</label>
+              <input className="form-control" type="email" name="email" placeholder="email@example.com" value={form.email} onChange={handleChange} required />
+            </div>
 
-        <input
-          type="password"
-          name="password"
-          placeholder={
-            editingId
-              ? "Kosongkan jika tidak ingin mengganti password"
-              : "Password"
-          }
-          value={form.password}
-          onChange={handleChange}
-          required={!editingId}
-        />
+            <div className="form-group">
+              <label>Password</label>
+              <input 
+                className="form-control" 
+                type="password" 
+                name="password" 
+                placeholder={editingId ? "Kosongkan jika tidak diganti" : "Password kuat"} 
+                value={form.password} 
+                onChange={handleChange} 
+                required={!editingId} 
+              />
+            </div>
 
-        <select
-          name="role"
-          value={form.role}
-          onChange={handleChange}
-        >
-          <option value="admin">Admin</option>
-          <option value="superadmin">Super Admin</option>
-        </select>
+            <div className="form-group">
+              <label>Hak Akses (Role)</label>
+              <select className="form-control" name="role" value={form.role} onChange={handleChange}>
+                <option value="admin">Admin</option>
+                <option value="superadmin">Super Admin</option>
+              </select>
+            </div>
 
-        <div
-          style={{
-            display: "flex",
-            gap: 10,
-          }}
-        >
-          <button type="submit">
-            {editingId
-              ? "Update User"
-              : "Tambah User"}
-          </button>
-
-          <button
-            type="button"
-            onClick={resetForm}
-          >
-            Reset
-          </button>
+            <div style={{ display: "flex", gap: '12px', gridColumn: '1 / -1', marginTop: '8px' }}>
+              <button className="btn btn-primary" type="submit">
+                {editingId ? "Update User" : "Simpan Data"}
+              </button>
+              <button className="btn btn-secondary" type="button" onClick={resetForm}>
+                Batal
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
 
-      <table
-        border="1"
-        cellPadding="10"
-        width="100%"
-      >
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Nama</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th width="170">Aksi</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {loading ? (
-            <tr>
-              <td colSpan="5">
-                Memuat data...
-              </td>
-            </tr>
-          ) : users.length === 0 ? (
-            <tr>
-              <td colSpan="5">
-                Tidak ada data
-              </td>
-            </tr>
-          ) : (
-            users.map((user, index) => (
-              <tr key={user._id}>
-                <td>{index + 1}</td>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.role}</td>
-
-                <td>
-                  <button
-                    onClick={() =>
-                      handleEdit(user)
-                    }
-                  >
-                    Edit
-                  </button>
-
-                  <button
-                    style={{
-                      marginLeft: 10,
-                    }}
-                    onClick={() =>
-                      handleDelete(user._id)
-                    }
-                  >
-                    Hapus
-                  </button>
-                </td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+        <div style={{ background: "#fff", padding: '24px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
+          <h3 style={{ marginTop: 0, marginBottom: '20px', fontSize: '1.2rem' }}>Daftar Pengguna</h3>
+          <div style={{ overflowX: 'auto' }}>
+            <table className="table-modern">
+              <thead>
+                <tr>
+                  <th width="50">No</th>
+                  <th>Nama</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th width="160">Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                {loading ? (
+                  <tr>
+                    <td colSpan="5" style={{ textAlign: 'center', padding: '20px' }}>Memuat data...</td>
+                  </tr>
+                ) : users.length === 0 ? (
+                  <tr>
+                    <td colSpan="5" style={{ textAlign: 'center', padding: '20px', color: '#666' }}>Tidak ada data pengguna</td>
+                  </tr>
+                ) : (
+                  users.map((user, index) => (
+                    <tr key={user._id}>
+                      <td>{index + 1}</td>
+                      <td style={{ fontWeight: 500 }}>{user.name}</td>
+                      <td>{user.email}</td>
+                      <td>
+                        <span style={{ 
+                          padding: '4px 8px', 
+                          borderRadius: '4px', 
+                          fontSize: '0.85em', 
+                          fontWeight: 500,
+                          backgroundColor: user.role === 'superadmin' ? '#e3f2fd' : '#f5f5f5',
+                          color: user.role === 'superadmin' ? '#1565c0' : '#424242'
+                        }}>
+                          {user.role}
+                        </span>
+                      </td>
+                      <td>
+                        <button className="btn btn-secondary" style={{ padding: '6px 12px', fontSize: '0.85rem', marginRight: '8px' }} onClick={() => handleEdit(user)}>Edit</button>
+                        <button className="btn btn-danger" style={{ padding: '6px 12px', fontSize: '0.85rem' }} onClick={() => handleDelete(user._id)}>Hapus</button>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </MainLayout>
   );
 }

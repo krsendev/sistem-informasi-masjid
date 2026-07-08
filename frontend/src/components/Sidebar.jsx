@@ -20,7 +20,6 @@ export default function Sidebar() {
         <Link to="/users">Pengguna</Link>
         <Link to="/events">Event</Link>
         <Link to="/announcement">Pengumuman</Link>
-        <Link to="/donations">Donasi</Link>
         <Link to="/finance">Keuangan</Link>
       </div>
     </div>

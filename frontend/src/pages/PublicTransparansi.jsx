@@ -175,9 +175,9 @@ export default function PublicTransparansi() {
                       {data.recentDonations.map((d) => (
                         <tr key={d._id}>
                           <td>{formatDate(d.date)}</td>
-                          <td>{d.donorName}</td>
+                          <td>{d.donorName || "Hamba Allah"}</td>
                           <td style={{ textTransform: "capitalize" }}>{d.category}</td>
-                          <td>{formatCurrency(d.amount)}</td>
+                          <td style={{ textAlign: "right" }}>{formatCurrency(d.amount)}</td>
                         </tr>
                       ))}
                     </tbody>

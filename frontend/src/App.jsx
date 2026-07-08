@@ -8,12 +8,10 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import Users from "./pages/Users";
 import Events from "./pages/Events";
 import Announcement from "./pages/Announcement";
-import Donations from "./pages/Donations";
 import Finance from "./pages/Finance";
 
 // Public pages
 import PublicPengumuman from "./pages/PublicPengumuman";
-import PublicKajian from "./pages/PublicKajian";
 import PublicKegiatan from "./pages/PublicKegiatan";
 import PublicTransparansi from "./pages/PublicTransparansi";
 
@@ -26,7 +24,6 @@ function App() {
         <Route path="/masuk" element={<Login />} />
         <Route path="/pengumuman" element={<PublicPengumuman />} />
         <Route path="/pengumuman/:id" element={<PublicPengumuman />} />
-        <Route path="/kajian" element={<PublicKajian />} />
         <Route path="/kegiatan" element={<PublicKegiatan />} />
         <Route path="/transparansi" element={<PublicTransparansi />} />
 
@@ -52,12 +49,6 @@ function App() {
         <Route path="/announcement" element={
             <ProtectedRoute>
               <Announcement />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/donations" element={
-            <ProtectedRoute>
-              <Donations />
             </ProtectedRoute>
           }
         />
