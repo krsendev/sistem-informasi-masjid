@@ -189,7 +189,7 @@ export default function Beranda() {
                         color: "#005bac",
                       }}
                     >
-                      📢
+                      <i className="fa-solid fa-bullhorn"></i>
                     </div>
                   )}
                   <div className="beranda-announcement-card__body">
@@ -217,7 +217,7 @@ export default function Beranda() {
                 </div>
               ) : (
                 <div className="beranda-empty">
-                  <div className="beranda-empty__icon">📋</div>
+                  <div className="beranda-empty__icon"><i className="fa-solid fa-clipboard-list"></i></div>
                   <p>Belum ada pengumuman terbaru.</p>
                 </div>
               )}
@@ -226,13 +226,7 @@ export default function Beranda() {
             {/* Kajian / Events Mendatang */}
             <div className="beranda-events">
               <div className="beranda-events__header">
-                <svg
-                  className="beranda-events__icon"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7v-5z" />
-                </svg>
+                <i className="fa-regular fa-calendar-days beranda-events__icon" style={{ fontSize: '24px' }}></i>
                 <h2 className="beranda-events__title">Kajian Mendatang</h2>
               </div>
 
@@ -258,7 +252,7 @@ export default function Beranda() {
                   ))
                 ) : (
                   <div className="beranda-empty">
-                    <div className="beranda-empty__icon">📅</div>
+                    <div className="beranda-empty__icon"><i className="fa-regular fa-calendar"></i></div>
                     <p>Belum ada kajian mendatang.</p>
                   </div>
                 )}
@@ -283,7 +277,7 @@ export default function Beranda() {
                 perkembangan dana infrastruktur kami saat ini.
               </p>
               <Link to="/transparansi" className="beranda-finance__link">
-                Lihat Laporan Detail 📊
+                Lihat Laporan Detail <i className="fa-solid fa-chart-line" style={{ marginLeft: '8px' }}></i>
               </Link>
             </div>
 

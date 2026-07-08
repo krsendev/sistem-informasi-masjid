@@ -4,11 +4,11 @@ export default function Sidebar() {
   const location = useLocation();
 
   const navItems = [
-    { path: "/dashboard", label: "Dashboard", icon: "📊" },
-    { path: "/users", label: "Pengguna", icon: "👥" },
-    { path: "/events", label: "Event", icon: "📅" },
-    { path: "/announcement", label: "Pengumuman", icon: "📢" },
-    { path: "/finance", label: "Keuangan", icon: "💰" },
+    { path: "/dashboard", label: "Dashboard", icon: <i className="fa-solid fa-chart-pie"></i> },
+    { path: "/users", label: "Pengguna", icon: <i className="fa-solid fa-users"></i> },
+    { path: "/events", label: "Event", icon: <i className="fa-regular fa-calendar-days"></i> },
+    { path: "/announcement", label: "Pengumuman", icon: <i className="fa-solid fa-bullhorn"></i> },
+    { path: "/finance", label: "Keuangan", icon: <i className="fa-solid fa-wallet"></i> },
   ];
 
   return (

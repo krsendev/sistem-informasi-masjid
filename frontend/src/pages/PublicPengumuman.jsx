@@ -69,7 +69,7 @@ export default function PublicPengumuman() {
       <section className="page-hero">
         <div className="page-hero__inner">
           <div className="page-hero__content">
-            <div className="page-hero__badge">📢 Informasi Terkini</div>
+            <div className="page-hero__badge"><i className="fa-solid fa-bullhorn"></i> Informasi Terkini</div>
             <h1 className="page-hero__title">Pengumuman</h1>
             <p className="page-hero__subtitle">
               Temukan informasi terbaru seputar kegiatan, program, dan
@@ -89,7 +89,7 @@ export default function PublicPengumuman() {
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
             />
-            <button className="page-toolbar__search-btn" type="submit">🔍</button>
+            <button className="page-toolbar__search-btn" type="submit"><i className="fa-solid fa-magnifying-glass"></i></button>
           </form>
           <div className="page-toolbar__filters">
             {CATEGORIES.map((cat) => (
@@ -114,15 +114,15 @@ export default function PublicPengumuman() {
                   {item.thumbnail ? (
                     <img className="card__image" src={`${apiBase}${item.thumbnail}`} alt={item.title} />
                   ) : (
-                    <div className="card__image-placeholder">📰</div>
+                    <div className="card__image-placeholder"><i className="fa-regular fa-newspaper"></i></div>
                   )}
                   <div className="card__body">
                     <span className="card__category">{item.category}</span>
                     <h3 className="card__title">{item.title}</h3>
                     <div className="card__meta">
-                      <span className="card__meta-item">📅 {formatDate(item.publishedAt || item.createdAt)}</span>
+                      <span className="card__meta-item"><i className="fa-regular fa-calendar"></i> {formatDate(item.publishedAt || item.createdAt)}</span>
                       {item.author?.name && (
-                        <span className="card__meta-item">✏️ {item.author.name}</span>
+                        <span className="card__meta-item"><i className="fa-solid fa-pencil"></i> {item.author.name}</span>
                       )}
                     </div>
                     <p className="card__excerpt">
@@ -162,7 +162,7 @@ export default function PublicPengumuman() {
           </>
         ) : (
           <div className="empty-state">
-            <div className="empty-state__icon">📋</div>
+            <div className="empty-state__icon"><i className="fa-solid fa-clipboard-list"></i></div>
             <p className="empty-state__text">Belum ada pengumuman yang diterbitkan.</p>
           </div>
         )}

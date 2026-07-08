@@ -204,8 +204,8 @@ export default function Events() {
                       <td style={{ whiteSpace: 'nowrap' }}>{event.startTime} - {event.endTime}</td>
                       <td>
                         <strong style={{ display: 'block' }}>{event.title}</strong>
-                        {event.ustadz && <span style={{ fontSize: '0.85em', color: '#666' }}>🎤 {event.ustadz}</span>}
-                        <div style={{ fontSize: '0.85em', color: '#666', marginTop: '4px' }}>📍 {event.location}</div>
+                        {event.ustadz && <span style={{ fontSize: '0.85em', color: '#666' }}><i className="fa-solid fa-microphone"></i> {event.ustadz}</span>}
+                        <div style={{ fontSize: '0.85em', color: '#666', marginTop: '4px' }}><i className="fa-solid fa-location-dot"></i> {event.location}</div>
                       </td>
                       <td style={{ textTransform: 'capitalize' }}>{event.category}</td>
                       <td>

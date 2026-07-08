@@ -15,9 +15,7 @@ export default function PublicNavbar() {
     <header className="public-navbar" id="public-navbar">
       <div className="public-navbar__container">
         <Link to="/" className="public-navbar__brand">
-          <svg className="public-navbar__icon" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-            <path d="M12 2L2 8.5V10h1v10h2V10h14v10h2V10h1V8.5L12 2zm0 2.31L19 8H5l7-3.69zM8 18v-6h3v6H8zm5 0v-6h3v6h-3z"/>
-          </svg>
+          <i className="fa-solid fa-mosque public-navbar__icon" style={{ fontSize: '24px', marginRight: '8px' }}></i>
           <span className="public-navbar__brand-text">SIMM Al-Hikmah</span>
         </Link>
 

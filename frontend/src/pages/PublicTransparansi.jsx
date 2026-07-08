@@ -75,21 +75,21 @@ export default function PublicTransparansi() {
             {/* Summary Stats */}
             <div className="finance-stats">
               <div className="finance-stat-card">
-                <div className="finance-stat-card__label">💰 Total Pemasukan (YTD)</div>
+                <div className="finance-stat-card__label"><i className="fa-solid fa-sack-dollar"></i> Total Pemasukan (YTD)</div>
                 <div className="finance-stat-card__value">{formatCurrency(data.totalIncome)}</div>
                 <div className="finance-stat-card__sub finance-stat-card__sub--positive">
                   {data.incomeCount} transaksi
                 </div>
               </div>
               <div className="finance-stat-card">
-                <div className="finance-stat-card__label">💸 Total Pengeluaran (YTD)</div>
+                <div className="finance-stat-card__label"><i className="fa-solid fa-money-bill-transfer"></i> Total Pengeluaran (YTD)</div>
                 <div className="finance-stat-card__value">{formatCurrency(data.totalExpense)}</div>
                 <div className="finance-stat-card__sub">
                   {data.expenseCount} transaksi
                 </div>
               </div>
               <div className="finance-stat-card">
-                <div className="finance-stat-card__label">📊 Saldo Bersih</div>
+                <div className="finance-stat-card__label"><i className="fa-solid fa-scale-balanced"></i> Saldo Bersih</div>
                 <div className="finance-stat-card__value">{formatCurrency(data.balance)}</div>
                 <div className="finance-stat-card__sub finance-stat-card__sub--positive">
                   Tahun {data.year}
@@ -190,7 +190,7 @@ export default function PublicTransparansi() {
           </>
         ) : (
           <div className="empty-state">
-            <div className="empty-state__icon">📊</div>
+            <div className="empty-state__icon"><i className="fa-solid fa-chart-line"></i></div>
             <p className="empty-state__text">Data keuangan belum tersedia.</p>
           </div>
         )}

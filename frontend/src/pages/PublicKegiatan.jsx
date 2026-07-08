@@ -69,7 +69,7 @@ export default function PublicKegiatan() {
       <section className="page-hero">
         <div className="page-hero__inner">
           <div className="page-hero__content">
-            <div className="page-hero__badge">🕌 Program & Kegiatan</div>
+            <div className="page-hero__badge"><i className="fa-solid fa-mosque"></i> Program & Kegiatan</div>
             <h1 className="page-hero__title">Kegiatan Masjid</h1>
             <p className="page-hero__subtitle">
               Jadwal lengkap kegiatan masjid meliputi sholat berjamaah, pengajian,
@@ -89,7 +89,7 @@ export default function PublicKegiatan() {
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
             />
-            <button className="page-toolbar__search-btn" type="submit">🔍</button>
+            <button className="page-toolbar__search-btn" type="submit"><i className="fa-solid fa-magnifying-glass"></i></button>
           </form>
           <div className="page-toolbar__filters">
             <button
@@ -150,8 +150,8 @@ export default function PublicKegiatan() {
                       </div>
                       <h3 className="event-card__title">{event.title}</h3>
                       <div className="event-card__meta">
-                        {event.ustadz && <span>🎤 {event.ustadz}</span>}
-                        <span className="event-card__location">📍 {event.location}</span>
+                        {event.ustadz && <span><i className="fa-solid fa-microphone"></i> {event.ustadz}</span>}
+                        <span className="event-card__location"><i className="fa-solid fa-location-dot"></i> {event.location}</span>
                       </div>
                     </div>
                   </div>
@@ -175,7 +175,7 @@ export default function PublicKegiatan() {
           </>
         ) : (
           <div className="empty-state">
-            <div className="empty-state__icon">📅</div>
+            <div className="empty-state__icon"><i className="fa-regular fa-calendar-xmark"></i></div>
             <p className="empty-state__text">
               {tab === "upcoming" ? "Belum ada kegiatan mendatang." : "Belum ada data kegiatan."}
             </p>
