@@ -11,32 +11,21 @@ export default function Navbar({ toggleSidebar }) {
   const user = JSON.parse(localStorage.getItem("user"));
 
   return (
-    <div
-      style={{
-        height: "70px",
-        background: "#ffffff",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "0 30px",
-        borderBottom: "1px solid #e2e8f0",
-        boxShadow: "0 2px 4px rgba(0,0,0,0.02)",
-      }}
-    >
-      <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+    <div className="admin-navbar">
+      <div className="admin-navbar__left">
         <button 
           className="hamburger-btn" 
           onClick={toggleSidebar}
         >
           <i className="fa-solid fa-bars"></i>
         </button>
-        <h3 style={{ margin: 0, color: "#334155", fontSize: "1.2rem", fontWeight: "600" }}>
+        <h3 className="admin-navbar__title">
           Admin Panel
         </h3>
       </div>
 
-      <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+      <div className="admin-navbar__right">
+        <div className="admin-navbar__user">
           <div style={{
             width: "36px",
             height: "36px",
@@ -47,40 +36,22 @@ export default function Navbar({ toggleSidebar }) {
             alignItems: "center",
             justifyContent: "center",
             fontWeight: "bold",
-            fontSize: "14px"
+            fontSize: "14px",
+            flexShrink: 0
           }}>
             {user?.name ? user.name.charAt(0).toUpperCase() : "A"}
           </div>
-          <span style={{ fontWeight: "500", color: "#475569" }}>
+          <span className="admin-navbar__user-name">
             {user?.nama || user?.name || "Admin"}
           </span>
         </div>
 
         <button 
           onClick={logout}
-          style={{
-            background: "#fee2e2",
-            color: "#ef4444",
-            border: "none",
-            padding: "8px 16px",
-            borderRadius: "6px",
-            cursor: "pointer",
-            fontWeight: "600",
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            transition: "all 0.2s ease",
-            fontSize: "14px"
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = "#fecaca";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = "#fee2e2";
-          }}
+          className="admin-navbar__logout"
         >
           <i className="fa-solid fa-right-from-bracket"></i>
-          Keluar
+          <span>Keluar</span>
         </button>
       </div>
     </div>
