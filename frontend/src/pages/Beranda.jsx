@@ -105,18 +105,15 @@ export default function Beranda() {
               akademik, jadwal kajian mendatang, dan transparansi keuangan
               institusi untuk membangun komunitas yang modern dan terhubung.
             </p>
+            <div className="beranda-hero__actions">
+              <a href="#beranda-schedule" className="beranda-hero__btn-primary">
+                Lihat Jadwal →
+              </a>
+            </div>
           </div>
-          <div className="beranda-hero__actions">
-            <a href="#beranda-schedule" className="beranda-hero__btn-primary">
-              Lihat Jadwal →
-            </a>
-            <Link to="/donasi" className="beranda-hero__btn-secondary">
-              Salurkan Donasi
-            </Link>
+          <div className="beranda-hero__image">
+            <img src={heroImage} alt="Ilustrasi Masjid Baitul Muttaqin" />
           </div>
-        </div>
-        <div className="beranda-hero__image">
-          <img src={heroImage} alt="Ilustrasi Masjid Baitul Muttaqin" />
         </div>
       </section>
 
