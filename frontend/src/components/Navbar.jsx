@@ -13,23 +13,67 @@ export default function Navbar() {
   return (
     <div
       style={{
-        height: 60,
+        height: "70px",
         background: "#ffffff",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: "0 20px",
-        borderBottom: "1px solid #ddd",
+        padding: "0 30px",
+        borderBottom: "1px solid #e2e8f0",
+        boxShadow: "0 2px 4px rgba(0,0,0,0.02)",
       }}
     >
-      <h3>Sistem Informasi Masjid</h3>
+      <h3 style={{ margin: 0, color: "#334155", fontSize: "1.2rem", fontWeight: "600" }}>
+        Admin Panel
+      </h3>
 
-      <div>
-        <span style={{ marginRight: 20 }}>
-          {user?.nama || user?.name || "Admin"}
-        </span>
+      <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <div style={{
+            width: "36px",
+            height: "36px",
+            borderRadius: "50%",
+            background: "#e0f2fe",
+            color: "#0284c7",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontWeight: "bold",
+            fontSize: "14px"
+          }}>
+            {user?.name ? user.name.charAt(0).toUpperCase() : "A"}
+          </div>
+          <span style={{ fontWeight: "500", color: "#475569" }}>
+            {user?.nama || user?.name || "Admin"}
+          </span>
+        </div>
 
-        <button onClick={logout}>Logout</button>
+        <button 
+          onClick={logout}
+          style={{
+            background: "#fee2e2",
+            color: "#ef4444",
+            border: "none",
+            padding: "8px 16px",
+            borderRadius: "6px",
+            cursor: "pointer",
+            fontWeight: "600",
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            transition: "all 0.2s ease",
+            fontSize: "14px"
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "#fecaca";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "#fee2e2";
+          }}
+        >
+          <i className="fa-solid fa-right-from-bracket"></i>
+          Keluar
+        </button>
       </div>
     </div>
   );
