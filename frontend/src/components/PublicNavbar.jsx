@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./PublicNavbar.css";
 
@@ -10,6 +11,7 @@ const navLinks = [
 
 export default function PublicNavbar() {
   const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className="public-navbar" id="public-navbar">
@@ -19,7 +21,14 @@ export default function PublicNavbar() {
           <span className="public-navbar__brand-text">SIMM Baitul Muttaqin</span>
         </Link>
 
-        <nav className="public-navbar__nav" aria-label="Navigasi utama">
+        <button 
+          className="public-navbar__toggle" 
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <i className={`fa-solid ${isOpen ? 'fa-xmark' : 'fa-bars'}`}></i>
+        </button>
+
+        <nav className={`public-navbar__nav ${isOpen ? 'open' : ''}`} aria-label="Navigasi utama">
           {navLinks.map((link) => {
             const isActive = link.to === "/" 
               ? location.pathname === "/"
@@ -29,6 +38,7 @@ export default function PublicNavbar() {
               <Link
                 key={link.to}
                 to={link.to}
+                onClick={() => setIsOpen(false)}
                 className={`public-navbar__link ${
                   isActive ? "public-navbar__link--active" : ""
                 }`}
@@ -37,9 +47,13 @@ export default function PublicNavbar() {
               </Link>
             );
           })}
+          
+          <Link to="/masuk" className="public-navbar__login-btn public-navbar__login-btn--mobile" onClick={() => setIsOpen(false)}>
+            Masuk
+          </Link>
         </nav>
 
-        <Link to="/masuk" className="public-navbar__login-btn">
+        <Link to="/masuk" className="public-navbar__login-btn public-navbar__login-btn--desktop">
           Masuk
         </Link>
       </div>
