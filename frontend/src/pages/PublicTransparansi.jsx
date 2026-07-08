@@ -101,7 +101,7 @@ export default function PublicTransparansi() {
             <div className="finance-grid">
               {/* Monthly Bar Chart */}
               <div className="finance-card">
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+                <div className="finance-card__header">
                   <h3 className="finance-card__title" style={{ margin: 0 }}>Ringkasan Bulanan</h3>
                   <div className="chart-legend">
                     <span className="chart-legend-item">
