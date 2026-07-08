@@ -5,27 +5,35 @@ import "./Dashboard.css";
 
 export default function Dashboard() {
   const [stats, setStats] = useState({
-    users: 0,
     events: 0,
     donations: 0,
     finances: 0,
+    expenses: 0,
   });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const [usersRes, eventsRes, pubFinanceRes] = await Promise.all([
-          api.get("/users"),
+        const [eventsRes, financesRes] = await Promise.all([
           api.get("/events"),
-          api.get("/public/finance-summary"),
+          api.get("/finances"),
         ]);
 
+        const allFinances = financesRes.data?.data || [];
+        const totalPemasukan = allFinances
+          .filter((item) => item.type === "income")
+          .reduce((acc, item) => acc + Number(item.amount), 0);
+        const totalPengeluaran = allFinances
+          .filter((item) => item.type === "expense")
+          .reduce((acc, item) => acc + Number(item.amount), 0);
+        const saldo = totalPemasukan - totalPengeluaran;
+
         setStats({
-          users: usersRes.data?.data?.length || usersRes.data?.data?.total || 0,
           events: eventsRes.data?.data?.length || eventsRes.data?.data?.total || 0,
-          donations: pubFinanceRes.data?.data?.totalIncomeAllTime || 0,
-          finances: pubFinanceRes.data?.data?.balanceAllTime || 0,
+          donations: totalPemasukan,
+          finances: saldo,
+          expenses: totalPengeluaran,
         });
       } catch (error) {
         console.error("Error fetching dashboard stats:", error);
@@ -65,12 +73,12 @@ export default function Dashboard() {
         ) : (
           <div className="dashboard-stats-grid">
             <div className="stat-card users">
-              <div className="stat-icon-wrapper">
-                <i className="fa-solid fa-users" style={{ fontSize: '24px' }}></i>
+              <div className="stat-icon-wrapper" style={{ background: '#fef2f2', color: '#ef4444' }}>
+                <i className="fa-solid fa-money-bill-transfer" style={{ fontSize: '24px' }}></i>
               </div>
               <div className="stat-content">
-                <span className="stat-value">{stats.users}</span>
-                <span className="stat-label">Total Jamaah</span>
+                <span className="stat-value">{formatCurrency(stats.expenses)}</span>
+                <span className="stat-label">Total Pengeluaran</span>
               </div>
             </div>
 
